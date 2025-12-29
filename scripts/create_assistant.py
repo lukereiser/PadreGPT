@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+"""
+Create a Padre GPT Assistant using OpenAI's Assistants API.
+Uploads PDFs and creates an assistant with file search capability.
+"""
+
+import os
+import sys
+import time
+from pathlib import Path
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Load environment variables
+load_dotenv()
+
+# Initialize OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Configuration
+PDF_DIR = Path(__file__).parent.parent / "downloads" / "telegram_pdfs" / "2025-12"
+ASSISTANT_NAME = "Padre GPT"
+ASSISTANT_INSTRUCTIONS = """You are Padre GPT, a Catholic theologian with deep expertise in Catholic theology, particularly the works of St. Thomas Aquinas.
+
+Your role is to:
+1. Answer questions from an authentically Catholic perspective, grounded in Catholic theology
+2. Draw from the uploaded documents including Church Fathers, Catechisms, Papal documents, and theological texts
+3. Provide accurate, respectful, and thoughtful responses
+4. Emphasize the works and thoughts of Thomas Aquinas when relevant
+5. Cite sources from the uploaded documents when possible
+
+You should:
+- Be charitable and patient in explanations
+- Distinguish between dogma, doctrine, and theological opinion
+- Encourage deeper study of the faith
+- Point users to relevant Church documents and teachings
+
+Avoid:
+- Personal opinions that contradict Church teaching
+- Speculation presented as doctrine
+- Being dismissive of sincere questions
+"""
+
+# Priority files - Essential Catholic texts
+PRIORITY_FILES = [
+    # Core Theology
+    "Theology for Beginners - Frank Sheed.pdf",
+    "A Catechism of Christian Doctrine - Ireland 1951.pdf",
+    "Catechism_of_the_Catholic_Church.pdf",  # Modern CCC
+    
+    # Thomas Aquinas & Summa
+    "Thomas Aquinas_ Contra Errores Graecorum_ English.pdf",
+    "How_to_Study_being_The_Letter_of_St_Thomas_Aquinas_to_Brother_John.pdf",
+    "Summa_Theologica_Part1_Prima_Pars.txt",
+    "Summa_Theologica_Part1-2_Prima_Secundae.txt",
+    "Summa_Theologica_Part2-2_Secunda_Secundae_Vol1.txt",
+    "Summa_Theologica_Part3_Tertia_Pars.txt",
+    
+    # Sacred Scripture
+    "Douay_Rheims_Bible_Complete.txt",
+    
+    # Church Fathers
+    "St. Justin Martyr-The First Apology of Justin.pdf",
+    "St. Justin Martyr-2nd Apology.pdf",
+    "The_First_Seven_Ecumenical_Councils_325_787_Their_History_and_Theology.pdf",
+    
+    # Papal & Spiritual
+    "The Practice Of Humility - Pope Leo XIII.pdf",
+    "Uniformity with God's Will - St. Alphonsus de Ligouri.pdf",
+    "The papal encyclicals  1958-1981.pdf",
+]
+
+
+def get_files_to_upload(priority_only=True):
+    """Get list of files to upload (PDFs and TXTs)."""
+    if priority_only:
+        files = []
+        for name in PRIORITY_FILES:
+            path = PDF_DIR / name
+            if path.exists():
+                files.append(path)
+            else:
+                print(f"⚠️  Not found: {name}")
+        return files
+    else:
+        pdfs = list(PDF_DIR.glob("*.pdf"))
+        txts = list(PDF_DIR.glob("*.txt"))
+        return pdfs + txts
+
+
+def upload_files(file_paths):
+    """Upload files (PDF and TXT) to OpenAI."""
+    uploaded_file_ids = []
+    
+    for file_path in file_paths:
+        print(f"📤 Uploading: {file_path.name}...", end=" ", flush=True)
+        try:
+            with open(file_path, "rb") as f:
+                file = client.files.create(file=f, purpose="assistants")
+            uploaded_file_ids.append(file.id)
+            print(f"✅ ({file.id})")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+    
+    return uploaded_file_ids
+
+
+def create_assistant(file_ids):
+    """Create the Padre GPT assistant with retrieval."""
+    print("\n🤖 Creating assistant...", end=" ", flush=True)
+    
+    # Create assistant with file_search tool
+    # Files will be attached to threads when chatting
+    assistant = client.beta.assistants.create(
+        name=ASSISTANT_NAME,
+        instructions=ASSISTANT_INSTRUCTIONS,
+        model="gpt-4o",
+        tools=[{"type": "file_search"}],
+    )
+    
+    print(f"✅ ({assistant.id})")
+    return assistant, file_ids
+
+
+def main():
+    print("=" * 60)
+    print("🙏 PADRE GPT ASSISTANT CREATOR")
+    print("=" * 60)
+    
+    # Check for API key
+    if not os.getenv("OPENAI_API_KEY"):
+        print("❌ Error: OPENAI_API_KEY not found in .env")
+        sys.exit(1)
+    
+    # Get files to upload
+    print(f"\n📁 Looking for files in: {PDF_DIR}")
+    files_to_upload = get_files_to_upload(priority_only=True)
+    print(f"📚 Found {len(files_to_upload)} priority files\n")
+    
+    if not files_to_upload:
+        print("❌ No files found!")
+        sys.exit(1)
+    
+    # Upload files
+    print("📤 UPLOADING FILES")
+    print("-" * 40)
+    file_ids = upload_files(files_to_upload)
+    
+    if not file_ids:
+        print("❌ No files uploaded!")
+        sys.exit(1)
+    
+    # Create assistant
+    assistant, file_ids = create_assistant(file_ids)
+    
+    # Save assistant ID and file IDs
+    print("\n" + "=" * 60)
+    print("✅ PADRE GPT ASSISTANT CREATED SUCCESSFULLY!")
+    print("=" * 60)
+    print(f"\n📋 Assistant ID: {assistant.id}")
+    print(f"📁 File IDs: {len(file_ids)} files uploaded")
+    
+    # Append to .env
+    env_path = Path(__file__).parent.parent / ".env"
+    with open(env_path, "a") as f:
+        f.write(f"\n# Padre GPT Assistant\n")
+        f.write(f"ASSISTANT_ID={assistant.id}\n")
+        f.write(f"FILE_IDS={','.join(file_ids)}\n")
+    
+    print(f"\n💾 IDs saved to .env")
+    print("\n🚀 Next: Run 'streamlit run app.py' to start the web interface!")
+
+
+if __name__ == "__main__":
+    main()

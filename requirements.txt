@@ -1,0 +1,11 @@
+telethon==1.40.0
+python-dotenv==1.0.1
+tqdm==4.66.6
+
+# Telegram Bot
+python-telegram-bot==21.7
+
+# OpenAI
+openai==1.58.1
+
+

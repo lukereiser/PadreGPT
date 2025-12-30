@@ -72,39 +72,48 @@ Create **Padre GPT**, an AI assistant that answers questions from an authentical
 
 **Current State**:
 - ✅ 77+ PDFs downloaded from Telegram (808MB)
-- ✅ 20 files uploaded to Assistant (see list below)
-- ✅ Added Augustine, Kempis works from Project Gutenberg
+- ✅ 30 files uploaded to Assistant (see list below)
+- ✅ Major expansion: Augustine, Aquinas, John of the Cross, Kempis, and more
 
-**Books Currently Uploaded (20 files)**:
-| Book | Type | Size |
-|------|------|------|
+**Books Currently Uploaded (30 files)**:
+| Book | Type | Author/Source |
+|------|------|---------------|
 | **Core Theology** |  |  |
-| Theology for Beginners - Frank Sheed | PDF | 832KB |
-| A Catechism of Christian Doctrine (Ireland 1951) | PDF | 6.1MB |
-| Catechism of the Catholic Church | PDF | ~3MB |
-| **Thomas Aquinas** |  |  |
-| Contra Errores Graecorum - Aquinas | PDF | 152KB |
-| How to Study - St. Thomas Aquinas | PDF | 1.1MB |
-| Summa Theologica Part 1 (Prima Pars) | TXT | ~2.9MB |
-| Summa Theologica Part 1-2 (Prima Secundae) | TXT | ~2.9MB |
-| Summa Theologica Part 2-2 (Secunda Secundae) Vol 1 | TXT | ~4.2MB |
-| Summa Theologica Part 3 (Tertia Pars) | TXT | ~2.8MB |
+| Theology for Beginners | PDF | Frank Sheed |
+| A Catechism of Christian Doctrine (1951) | PDF | Ireland |
+| Reason Informed by Faith | PDF | Moral Theology |
+| **Thomas Aquinas & Philosophy** |  |  |
+| Contra Errores Graecorum | PDF | Aquinas |
+| How to Study | PDF | Aquinas |
+| Saint Thomas and the Greeks | PDF | Anton Pegis |
+| Summa Theologica (4 parts) | TXT | Aquinas |
 | **Sacred Scripture** |  |  |
-| Douay-Rheims Bible Complete | TXT | ~5.6MB |
-| **Church Fathers** |  |  |
-| St. Justin Martyr - First Apology | PDF | 136KB |
-| St. Justin Martyr - Second Apology | PDF | 40KB |
-| First Seven Ecumenical Councils | PDF | 2.1MB |
+| Douay-Rheims Bible Complete | TXT | Challoner |
+| **Church Fathers & Councils** |  |  |
+| First Apology | PDF | St. Justin Martyr |
+| Second Apology | PDF | St. Justin Martyr |
+| First Seven Ecumenical Councils | PDF | History/Theology |
 | **St. Augustine** |  |  |
-| City of God - Volume I | TXT | ~1.3MB |
-| City of God - Volume II | TXT | ~1.4MB |
-| Confessions | TXT | ~617KB |
-| **Spiritual Classics** |  |  |
-| Imitation of Christ - Thomas à Kempis | TXT | ~375KB |
+| City of God (Vol I & II) | TXT | Augustine |
+| Confessions | TXT | Augustine |
+| **Mystical & Spiritual Classics** |  |  |
+| Imitation of Christ | TXT | Thomas à Kempis |
+| Little Garden of Roses & Valley of Lilies | PDF | Thomas à Kempis |
+| Mystical Doctrine of St. John of the Cross | PDF | Doctor of the Church |
+| **Liturgy & Sacraments** |  |  |
+| Pastoral Liturgy | PDF | Jungmann |
+| Sin & Confession (Eve of Reformation) | PDF | Tentler |
+| Method to Hear Mass | PDF | St. Leonard |
+| Directory on Popular Piety & Liturgy | PDF | Vatican |
+| **Ecclesiology & Apologetics** |  |  |
+| Primacy of the Apostolic See | PDF | Kenrick |
+| Enchiridion of Commonplaces | PDF | Counter-Reformation |
+| **Marian Devotion** |  |  |
+| Consecration to Mary | PDF | St. Maximilian Kolbe |
 | **Papal & Spiritual** |  |  |
-| Practice of Humility - Pope Leo XIII | PDF | 2.1MB |
-| Uniformity with God's Will - St. Alphonsus | PDF | 148KB |
-| Papal Encyclicals 1958-1981 | PDF | 27MB |
+| Practice of Humility | PDF | Pope Leo XIII |
+| Uniformity with God's Will | PDF | St. Alphonsus |
+| Papal Encyclicals 1958-1981 | PDF | Multiple Popes |
 
 **Priority Books to Find/Add**:
 | Book | Status | Source |
@@ -346,14 +355,24 @@ git push origin main
 
 ## 📝 Changelog
 
-### 2024-12-29 - Content Agent Session
+### 2024-12-29 - Content Agent Session (Expansion)
+- Expanded library from 20 to 30 files:
+  - Added St. John of the Cross (Mystical Doctrine)
+  - Added Thomas à Kempis (Little Garden of Roses)
+  - Added Jungmann's Pastoral Liturgy
+  - Added St. Leonard's Method to Hear Mass
+  - Added Papal Primacy (Kenrick), Apologetics (Enchiridion)
+  - Added St. Maximilian Kolbe's Marian Consecration
+  - Added Moral Theology (Reason Informed by Faith)
+- New Assistant ID: `asst_mN2zJ7qQEv9YzwNETidlx3ju`
+
+### 2024-12-29 - Content Agent Session (Initial)
 - Downloaded 4 new books from Project Gutenberg:
   - City of God (Volumes I & II) - St. Augustine
   - Confessions - St. Augustine  
   - Imitation of Christ - Thomas à Kempis
 - Updated `PRIORITY_FILES` to include 20 total files
-- Created new Assistant (ID: `asst_QXrmyfNZoMzFPE42EbYLPZXK`)
-- Updated `.env` with new Assistant ID
+- Created new Assistant
 
 ### 2024-12-29 - UI/UX Agent Session
 - **Complete UI redesign** of `app.py` with Catholic/medieval aesthetic
@@ -399,11 +418,12 @@ git push origin main
 3. Configure GoDaddy CNAME
 4. Verify site is live
 
-### 🟡 MEDIUM - Content Agent
+### 🟢 COMPLETE - Content Agent
 1. ✅ Added Augustine (City of God, Confessions) from Project Gutenberg
 2. ✅ Added Imitation of Christ (Thomas à Kempis)
-3. ✅ 20 files now uploaded to Assistant
-4. 🔄 Consider adding: Didache, Letter to Diognetus, more Church Fathers
+3. ✅ 30 files now uploaded to Assistant
+4. ✅ Added: John of the Cross, Jungmann, Kolbe, Moral Theology, Liturgy, Apologetics
+5. 🔄 Future: Didache, Letter to Diognetus, pre-1958 Encyclicals
 
 ### 🟢 LOW - Telegram Agent
 1. ✅ Bot script created with persistent storage

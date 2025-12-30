@@ -47,10 +47,12 @@ PRIORITY_FILES = [
     "Theology for Beginners - Frank Sheed.pdf",
     "A Catechism of Christian Doctrine - Ireland 1951.pdf",
     "Catechism_of_the_Catholic_Church.pdf",  # Modern CCC
+    "Reason_Informed_by_Faith_Foundations_of_Catholic_Morality_Richard.pdf",  # Moral theology
     
     # Thomas Aquinas & Summa
     "Thomas Aquinas_ Contra Errores Graecorum_ English.pdf",
     "How_to_Study_being_The_Letter_of_St_Thomas_Aquinas_to_Brother_John.pdf",
+    "Saint Thomas and the Greeks - Anton Charles Pegis.pdf",  # Thomistic philosophy
     "Summa_Theologica_Part1_Prima_Pars.txt",
     "Summa_Theologica_Part1-2_Prima_Secundae.txt",
     "Summa_Theologica_Part2-2_Secunda_Secundae_Vol1.txt",
@@ -59,7 +61,7 @@ PRIORITY_FILES = [
     # Sacred Scripture
     "Douay_Rheims_Bible_Complete.txt",
     
-    # Church Fathers
+    # Church Fathers & Early Church
     "St. Justin Martyr-The First Apology of Justin.pdf",
     "St. Justin Martyr-2nd Apology.pdf",
     "The_First_Seven_Ecumenical_Councils_325_787_Their_History_and_Theology.pdf",
@@ -69,8 +71,25 @@ PRIORITY_FILES = [
     "City_of_God_Volume_II_Augustine.txt",
     "Confessions_Augustine.txt",
     
-    # Spiritual Classics
+    # Mystical & Spiritual Classics
     "Imitation_of_Christ_Thomas_a_Kempis.txt",
+    "The_little_garden_of_roses_and_valley_of_lilies_Thomas_a_Kempis.pdf",  # More Kempis
+    "The_Mystical_Doctrine_of_St_John_of_the_Cross_R_H_J_Steuart;_John.pdf",  # Doctor of the Church
+    "The way of interior peace - Edouard de Lehen.pdf",  # Spiritual classic
+    "Edith-Stein - Selected-Writings.pdf",  # St. Teresa Benedicta of the Cross
+    
+    # Liturgy & Sacraments
+    "Pastoral-Liturgy - Josef-a-Jungmann.pdf",  # Foremost liturgy scholar
+    "Sin_and_Confession_on_the_Eve_of_the_Reformation_Thomas_N_Tentler.pdf",  # Confession
+    "Saint-LEONARD-of-Puerto-Mauricio-Method-to-Hear-Mass.pdf",  # The Holy Mass
+    "Directory_on_popular_piety_and_liturgy_principles_and_guidelines.pdf",  # Vatican document
+    
+    # Ecclesiology & Apologetics
+    "The_primacy_of_the_apostolic_see,_vindicated_Kenrick,_Francis_Patrick.pdf",  # Papal primacy
+    "Enchiridion_of_Commonplaces,_against_Luther_and_Enemies_of_the_Church.pdf",  # Apologetics
+    
+    # Marian Devotion
+    "Maximilian-Kolbe-s-Consecration-to-Mary.pdf",  # St. Maximilian Kolbe
     
     # Papal & Spiritual
     "The Practice Of Humility - Pope Leo XIII.pdf",

@@ -355,6 +355,22 @@ git push origin main
 
 ## 📝 Changelog
 
+### 2024-12-30 - Founder Agent (Instructions Overhaul)
+- **MAJOR**: Rewrote Assistant instructions with strict source hierarchy:
+  1. Holy Scripture (quote with book/chapter/verse)
+  2. Catechism (quote with CCC paragraph numbers)
+  3. Church Fathers (quote with work name/section)
+  4. Papal Documents (quote with document name)
+- Added requirement to always search documents and quote directly
+- Added example response format for consistency
+- **ACTION NEEDED**: Run `python scripts/create_assistant.py` to create new assistant with improved instructions, then update OPENAI_ASSISTANT_ID in .env
+
+### 2024-12-30 - Founder Agent (Agent Strategy)
+- Created agent strategy with 5 specialized roles
+- Documented deployment blockers (Railway domain + GoDaddy DNS)
+- Updated README as coordination hub
+- Defined tasks for Deploy, Content, Telegram, UI/UX agents
+
 ### 2024-12-29 - Content Agent Session (Expansion)
 - Expanded library from 20 to 30 files:
   - Added St. John of the Cross (Mystical Doctrine)

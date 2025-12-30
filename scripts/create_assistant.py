@@ -64,6 +64,14 @@ PRIORITY_FILES = [
     "St. Justin Martyr-2nd Apology.pdf",
     "The_First_Seven_Ecumenical_Councils_325_787_Their_History_and_Theology.pdf",
     
+    # St. Augustine
+    "City_of_God_Volume_I_Augustine.txt",
+    "City_of_God_Volume_II_Augustine.txt",
+    "Confessions_Augustine.txt",
+    
+    # Spiritual Classics
+    "Imitation_of_Christ_Thomas_a_Kempis.txt",
+    
     # Papal & Spiritual
     "The Practice Of Humility - Pope Leo XIII.pdf",
     "Uniformity with God's Will - St. Alphonsus de Ligouri.pdf",

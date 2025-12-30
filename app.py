@@ -79,6 +79,15 @@ st.markdown("""
     
     p, li, span, div {
         font-family: 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif !important;
+        color: var(--ink) !important;
+    }
+    
+    /* Ensure markdown paragraphs in tabs are visible */
+    .stTabs [data-baseweb="tab-panel"] p,
+    .stTabs [data-baseweb="tab-panel"] li {
+        color: var(--ink) !important;
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
     }
     
     /* ═══ Header Styling ═══ */
